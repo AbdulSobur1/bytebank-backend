@@ -1,10 +1,14 @@
 // index.js
 const express = require('express');
 const bcrypt = require('bcrypt');
-const supabase = require('./supabaseClient'); // Adjust the path as necessary
+const supabase = require('./supabaseClient'); 
+const authRoutes = require('./routes/auth'); //1. Add this line at the top
 
 const app = express();
 app.use(express.json());
+
+// Use the auth routes
+app.use('api/auth', authRoutes);
 
 // Signup route
 app.post('/signup', async (req, res) => {
